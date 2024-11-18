@@ -32,6 +32,9 @@ function App({ errorsCount, questions }: AppScreenProps): JSX.Element {
             element={
               <ArtistQuestionScreen
                 question={secondQuestion as QuestionArtist}
+                onAnswer={() => {
+                  throw new Error('Function \'onAnswer\' isn\'t implemented.');
+                }}
               />
             }
           />

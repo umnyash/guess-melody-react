@@ -1,13 +1,15 @@
+import { ChangeEvent } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
-import { QuestionArtist } from '../../types/question';
+import { QuestionArtist, UserArtistQuestionAnswer } from '../../types/question';
 
 type ArtistQuestionScreenProps = {
   question: QuestionArtist;
-}
+  onAnswer: (question: QuestionArtist, answer: UserArtistQuestionAnswer) => void;
+};
 
 function ArtistQuestionScreen(props: ArtistQuestionScreenProps): JSX.Element {
-  const { question } = props;
+  const { question, onAnswer } = props;
   const { answers, song } = question;
 
   return (
@@ -49,6 +51,10 @@ function ArtistQuestionScreen(props: ArtistQuestionScreenProps): JSX.Element {
                 name="answer"
                 value={`answer-${id}`}
                 id={`answer-${id}`}
+                onChange={(evt: ChangeEvent<HTMLInputElement>) => {
+                  evt.preventDefault();
+                  onAnswer(question, answer.artist);
+                }}
               />
               <label className="artist__name" htmlFor={`answer-${id}`}>
                 <img className="artist__picture" src={answer.picture} alt={answer.artist} />
