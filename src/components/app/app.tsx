@@ -8,13 +8,8 @@ import WinScreen from '../../pages/win-screen/win-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import GameScreen from '../../pages/game-screen/game-screen';
-import { Questions } from '../../types/question';
 
-type AppScreenProps = {
-  questions: Questions;
-}
-
-function App({ questions }: AppScreenProps): JSX.Element {
+function App(): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -44,9 +39,7 @@ function App({ questions }: AppScreenProps): JSX.Element {
           <Route
             path={AppRoute.Game}
             element={
-              <GameScreen
-                questions={questions}
-              />
+              <GameScreen />
             }
           />
           <Route
