@@ -3,13 +3,21 @@ import { incrementStep, checkUserAnswer, loadQuestions, requireAuthorization, re
 import { isAnswerCorrect } from '../game';
 import { FIRST_GAME_STEP, AuthorizationStatus } from '../const';
 import { questions } from '../mocks/questions';
+import { Questions } from '../types/question';
 
 const STEP_COUNT = 1;
 
-const initialState = {
+type InitialState = {
+  mistakes: number;
+  step: number;
+  questions: Questions;
+  authorizationStatus: AuthorizationStatus;
+}
+
+const initialState: InitialState = {
   mistakes: 0,
   step: FIRST_GAME_STEP,
-  questions,
+  questions: questions,
   authorizationStatus: AuthorizationStatus.Unknown,
 };
 
