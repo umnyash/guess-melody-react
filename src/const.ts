@@ -27,5 +27,7 @@ export enum APIRoute {
 }
 
 export enum NameSpace {
+  Data = 'DATA',
+  Game = 'GAME',
   User = 'User',
 }
