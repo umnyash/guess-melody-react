@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { HelmetProvider } from 'react-helmet-async';
+import HistoryRouter from './components/history-router/history-router';
+import browserHistory from './browser-history';
 import App from './components/app/app';
 import { ToastContainer } from 'react-toastify';
 import { store } from './store';
@@ -17,8 +20,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ToastContainer />
-      <App />
+      <HelmetProvider>
+        <HistoryRouter history={browserHistory}>
+          <ToastContainer />
+          <App />
+        </HistoryRouter>
+      </HelmetProvider>
     </Provider>
   </React.StrictMode>
 );
