@@ -15,5 +15,6 @@ export default defineConfig({
     setupFiles: [
       './src/setupTests.ts'
     ]
-  }
+  },
+  base: '/guess-melody-react'
 });
